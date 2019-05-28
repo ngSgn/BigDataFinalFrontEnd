@@ -1,0 +1,113 @@
+@import '../../color.scss';
+header {
+	background-color: $main_color;
+}
+
+.navbar {
+	.bars {
+		position: absolute;
+		top: 20px;
+		right: 15px;
+		cursor: pointer;
+		.bar1,
+		.bar2,
+		.bar3 {
+			width: 35px;
+			height: 5px;
+			background-color: $dark_color;
+			margin: 6px 0;
+			transition: 0.4s;
+		}
+	}
+	.navLinks {
+		height: 0;
+		animation: slideUp 0.5s ease;
+		overflow: hidden;
+		list-style: none;
+		li {
+			margin-top: 15px;
+			text-align: center;
+		}
+	}
+
+	&.active {
+		.bar1 {
+			-webkit-transform: rotate(-45deg) translate(-9px, 6px);
+			transform: rotate(-45deg) translate(-9px, 6px);
+			background-color: $text_color;
+		}
+
+		.bar2 {
+			opacity: 0;
+		}
+
+		.bar3 {
+			-webkit-transform: rotate(45deg) translate(-8px, -8px);
+			transform: rotate(45deg) translate(-8px, -8px);
+			background-color: $text_color;
+		}
+		.navLinks {
+			animation: slideDown 2s ease;
+			height: 100%;
+		}
+	}
+}
+@keyframes slideDown {
+	0% {
+		max-height: 0;
+	}
+	100% {
+		max-height: 1000px;
+	}
+}
+@keyframes slideUp {
+	0% {
+		max-height: 100%;
+	}
+	100% {
+		max-height: 0;
+	}
+}
+.link_text {
+	color: $dark_color;
+	text-decoration: none;
+	padding: 3px 8px;
+	font-weight: bold;
+	border-radius: 10px;
+	padding: 0;
+	&.title {
+		font-size: 30px;
+		white-space: nowrap;
+		display: inline-block;
+	}
+	&.link {
+		font-size: 20px;
+	}
+	&.active {
+		color: $text_color;
+		text-shadow: 0 0 10px $dark_color;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.navbar {
+		display: flex;
+		justify-content: space-between;
+		.bars {
+			display: none;
+		}
+		.navLinks {
+			height: 100%;
+			display: flex;
+
+			transform: scaleY(1);
+			li {
+				margin: 10px;
+				margin-left: 15px;
+			}
+		}
+		&.active .navLinks {
+			height: 100%;
+		}
+	}
+}
