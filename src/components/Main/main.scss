@@ -1,0 +1,37 @@
+.chart{
+    
+    overflow: auto;
+    &::-webkit-scrollbar-track
+    {
+
+	    background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar
+    {
+        width: 1px;
+        height: 3px;
+	    background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar-thumb
+    {
+        background-color: #000000;
+    }
+    svg{display: block;margin: 0 auto;}
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+    
+    .x.axis path {
+      display: none;
+    }
+    
+    .line {
+      fill: none;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
+}
