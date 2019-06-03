@@ -5,12 +5,20 @@ import '../main.scss';
 export default class extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { carOneMonthData: [], carTopFive: [], brandOneMonthData: [], brandTopFive: [], };
+		this.state = {
+			carOneMonthData: [], carTopFive: [],
+			brandOneMonthData: [], brandTopFive: [],
+		};
+
 	}
-	GetTopFiveData(result) {
+	GetTopFiveChartData(result) {
 		let tempData = "date";
+		let name = [];
+		let mean = [];
 		for (let i = 0; i < 5; i++) {
 			tempData += '	' + result[1][i].name;
+			name.push(result[1][i].name);
+			mean.push(result[1][i].mean);
 		}
 		tempData += "\n";
 		for (let i = 0; i < result[0].length; i++) {
@@ -20,47 +28,17 @@ export default class extends Component {
 			}
 			tempData += "\n";
 		}
-		return tempData;
+		return { name: name, mean: mean, chartData: tempData };
 	}
-	GetTrendsData(carNames, timeFrame) {
-		fetch("http://127.0.0.1:5000/get_trends_data", {
-			method: "POST",
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ carNames: carNames, timeFrame: timeFrame, })
-		})
-			.then(res => res.json())
-			.then(
-				(result) => {
-					console.log(result)
-				},
-				(error) => {
-					console.log(error)
-				}
-			)
-	}
-	GetCarName() {
-		fetch("http://127.0.0.1:5000/get_car_data")
-			.then(res => res.json())
-			.then(
-				(result) => {
-					console.log(result)
 
-				},
-				(error) => {
-					console.log(error)
-				}
-			)
-	}
+
 	GetCarOneMonthData() {
 		fetch("http://127.0.0.1:5000/get_one_month_data")
 			.then(res => res.json())
 			.then(
 				(result) => {
-					let tempData = this.GetTopFiveData(result)
-					this.setState({ carOneMonthData: result, carTopFive: tempData })
+					let tempChartData = this.GetTopFiveChartData(result)
+					this.setState({ carOneMonthData: result, carTopFive: tempChartData })
 				},
 				(error) => {
 					console.log(error)
@@ -72,9 +50,8 @@ export default class extends Component {
 			.then(res => res.json())
 			.then(
 				(result) => {
-					console.log()
-					let tempData = this.GetTopFiveData(result)
-					this.setState({ brandOneMonthData: result, brandTopFive: tempData })
+					let tempChartData = this.GetTopFiveChartData(result)
+					this.setState({ brandOneMonthData: result, brandTopFive: tempChartData })
 				},
 				(error) => {
 					console.log(error)
@@ -82,16 +59,14 @@ export default class extends Component {
 			)
 	}
 	componentDidMount() {
-		//this.GetCarOneMonthData()
 		this.GetBrandOneMonthData()
+		this.GetCarOneMonthData()
 	}
 	render() {
-		console.log(this.state.brandTopFive)
-		//<CompareTable title="Top 5 Electric Car in One Month" chartData={this.state.carTopFive} />
 		return (
 			<div className={'container'}>
-
-				<CompareTable title="Top 5 Brand in One Month" chartData={this.state.brandTopFive} />
+				<CompareTable id="chart_1" title="Top 5 Electric Car in One Month" chartData={this.state.carTopFive} />
+				<CompareTable id="chart_2" title="Top 5 Brand in One Month" chartData={this.state.brandTopFive} />
 			</div>
 		);
 	}

@@ -14,7 +14,6 @@ export default class extends Component {
 	}
 	LinkClicked = () => {
 		if (this.state.active) this.setState({ active: false });
-		console.log('yo');
 	};
 	render() {
 		return (
@@ -22,7 +21,7 @@ export default class extends Component {
 				<div
 					className={`${'container'} ${style.navbar} ${
 						this.state.active ? style.active : ''
-					}`}
+						}`}
 				>
 					<div
 						className={style.bars}

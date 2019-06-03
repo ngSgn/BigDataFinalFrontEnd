@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './components/Main/Home';
 import About from './components/Main/About';
 import Compare from './components/Main/Compare';
+import Detail from './components/Main/Detail'
 
 const HeaderComponent = withRouter(props => <Header {...props} />);
 
@@ -15,6 +16,7 @@ function App() {
 				<Route exact path="/" component={Home} />
 				<Route path="/about" component={About} />
 				<Route path="/compare" component={Compare} />
+				<Route path="/detail" component={Detail} />
 			</Router>
 		</div>
 	);
