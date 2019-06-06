@@ -1,0 +1,88 @@
+.filter_name_list{
+    .namesList{
+        max-height: 100px;
+    overflow: auto;
+    &::-webkit-scrollbar-track
+    {
+
+	    background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar
+    {
+        width: 5px;
+        height: 3px;
+	    background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar-thumb
+    {
+        background-color: #000000;
+    }
+    }
+    
+    .nameSelectList{
+        margin-bottom: 10px;
+    }
+
+    p,h2{
+        display: inline-block;
+        padding: 5px;
+        border: 1px solid rgb(177, 190, 190);
+        margin: 5px 0;
+        margin-right: 10px;
+        cursor: pointer;
+        background-color: azure;
+        &.clicked{
+            border: 1px solid rgb(177, 190, 190);
+            background-color: rgb(103, 226, 226);
+        }
+        &.disable{
+            pointer-events: none;
+            background-color: rgb(141, 141, 141);
+        }
+    }
+
+}
+.selectedName{
+    p{
+        display: inline-block;
+        padding: 2px 5px;
+
+        border: 1px solid rgb(177, 190, 190);
+        margin: 5px 0;
+        margin-right: 10px;
+        cursor: pointer;
+        background-color: azure;
+        span{
+          color: gray;  
+          font-size: 15px;
+        }
+    }
+}
+
+
+
+
+.filterBox{
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 20px;
+}
+.filterBox select {
+    background-color: azure;
+    color: rgb(117, 117, 117);
+    padding: 8px;
+    width: 200px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+
+  
+  .filterBox select option {
+    padding: 30px;
+  }

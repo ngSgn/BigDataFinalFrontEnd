@@ -2,6 +2,7 @@
   "name": "bda-final",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://ngSgn.github.io/BigDataFinalFrontEnd",
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.55",
     "d3": "^5.9.2",

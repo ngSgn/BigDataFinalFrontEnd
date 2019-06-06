@@ -47,7 +47,7 @@ class Detail extends Component {
     render() {
         return (
             <div className={'container'}>
-                <Search keywordList={this.state.keywordList} timeFrame={this.state.timeFrame} />
+                <Search keywordList={this.state.keywordList} timeFrame={this.state.timeFrame} geo={""} />
             </div>
         );
     }
